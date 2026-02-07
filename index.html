@@ -3,6 +3,48 @@
   <head>
     <title>Bakenyah</title>
     <style>
+      .day-mode {
+        background-color: #ffffff;
+        color: #000000;
+      }
+      .night-mode {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+      button {
+        background-color: #6799e4;
+        color: white;
+        font-size: 20px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #557acb;
+      }
+      a {
+        border: 2px solid #6799e4;
+        padding: 10px 20px;
+        display: inline-block;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #6799e4;
+        margin: 5px;
+      }
+      a:hover {
+        background-color: #6799e4;
+        color: white;
+      }
+      .container {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      img {
+        max-width: 300px;
+        flex-shrink: 0;
+      }
       body {
         background-color: #f0e68c;
       }
@@ -10,21 +52,52 @@
         color: #677ce4;
       }
     </style>
+    <script>
+      function spamText() {
+        if ('Notification' in window) {
+          if (Notification.permission === 'granted') {
+            spamNotifications();
+          } else if (Notification.permission !== 'denied') {
+            Notification.requestPermission().then(permission => {
+              if (permission === 'granted') {
+                spamNotifications();
+              }
+            });
+          }
+        }
+      }
+
+      function spamNotifications() {
+        for (let i = 0; i < 10; i++) {
+          setTimeout(() => {
+            new Notification('Bakenyah', {
+              body: 'Bakenyah is here!',
+              icon: 'Image/Bakenyah.jpg.webp'
+            });
+          }, i * 300);
+        }
+      }
+    </script>
   </head>
   <body>
     <p style="font-size: 50px; color: #6799e4; text-align: center">Bakenyah</p>
     <h2>Ini Bakenyah</h2>
-    <img src="Image/Bakenyah.jpg.webp" alt="Gambar Bakenyah" />
-    <p>
-      Bakenyah adalah kata yg diciptakan oleh homosapiens bernama Naldin Alfredo
-      Lase.Kata ini diciptakan pada tahun 2026, kata ini tidak memiliki arti dan
-      biasa di katakan ketika pengguna ingin membuat orang yang yapping
-      berhenti,kata ini juga bisa dikatakan ketika pengguna merasa
-      bosan,sedih,senang dan marah.
-    </p>
+    <div class="container">
+      <img src="Image/Bakenyah.jpg.webp" alt="Gambar Bakenyah" />
+      <p>
+        Bakenyah adalah kata yg diciptakan oleh homosapiens bernama Naldin Alfredo
+        Lase.Kata ini diciptakan pada tahun 2026, kata ini tidak memiliki arti dan
+        biasa di katakan ketika pengguna ingin membuat orang yang yapping
+        berhenti,kata ini juga bisa dikatakan ketika pengguna merasa
+        bosan,sedih,senang dan marah.
+      </p>
+    </div>
+    <button onclick="spamText()">Bakenyah</button>
     <a href="https://youtu.be/QB7ACr7pUuE?si=qFb_aKcJh3rEAROK"
       >Kunjungi Bakenyah</a
     >
     <a href="https://youtu.be/mZijHWpZZNM?si=V2XY8JXwMPTZ7vBU">Lagu Bakenyah</a>
   </body>
 </html>
+
+
